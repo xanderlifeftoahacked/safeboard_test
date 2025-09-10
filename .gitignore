@@ -1,0 +1,6 @@
+.clang-tidy
+CMakeCache.txt
+compile_commands.json
+.cache
+build
+Testing
