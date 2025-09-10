@@ -3,7 +3,11 @@ project(antivirus LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-deprecated-declarations")
+
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-deprecated-declarations")
+endif()
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 

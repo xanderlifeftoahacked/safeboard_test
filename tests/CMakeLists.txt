@@ -8,7 +8,17 @@ FetchContent_Declare(
     URL https://github.com/google/googletest/archive/refs/heads/main.zip
 )
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+if(WIN32)
+
+	add_custom_command(TARGET antivirus_tests POST_BUILD
+		COMMAND ${CMAKE_COMMAND} 
+		-E copy $<TARGET_FILE:AntivirusLib> 
+		$<TARGET_FILE_DIR:antivirus_tests>
+	)
+	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+endif()
+
 FetchContent_MakeAvailable(googletest)
 
 file(GLOB TEST_SOURCES *.cpp)
